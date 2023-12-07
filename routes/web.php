@@ -34,6 +34,7 @@ Route::get('/', function () {
 // All news items
 Route::get('/', function() {
     return view('home', [
+        'pagetitle' => 'Testwebsite_Loi - Home',
         'heading' => 'Latest news',
         'news' => newsitems::all()
     ]);
@@ -42,6 +43,35 @@ Route::get('/', function() {
 // Single news item
 Route::get('/news/{id}', function($id) {
     return view('news', [
+        'pagetitle' => 'News',
         'news' => newsitems::find($id)
+    ]);
+});
+// BMI calculator page
+Route::get('/bmi-calculator', function() {
+    return view('bmi-calculator', [
+        'pagetitle' => 'BMI calculator',
+        'heading' => 'Body Mass Index (BMI) calculator'
+    ]);
+});
+// Test page
+Route::get('/lab', function() {
+    return view('lab', [
+        'pagetitle' => 'Experimentation lab',
+        'heading' => 'Experimentation lab'
+    ]);
+});
+// Emo bunny page
+Route::get('/bunny', function() {
+    return view('bunny', [
+        'pagetitle' => 'Emo Bunny',
+        'heading' => 'Emo Bunny'
+    ]);
+});
+// Upload page
+Route::get('/upload', function() {
+    return view('upload', [
+        'pagetitle' => 'Upload',
+        'heading' => 'Upload'
     ]);
 });

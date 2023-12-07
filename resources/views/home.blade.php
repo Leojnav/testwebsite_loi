@@ -1,5 +1,7 @@
+@extends('layout')
+
+@section('content')
 <?php  
-$pagetitle = "Hello World!";
 $fullname = <<<_END
   Joël van Sandijk
 _END;
@@ -59,17 +61,18 @@ _END;
     <h1>{{$heading}}</h1>
     @unless(count($news) == 0)
       @foreach ($news as $news)
-        <p>{{$news['id']}}</p>
-        <h3><a href="/news/{{$news['id']}}">{{$news['title']}}</a></h3>
-        <p>{{$news['content']}}</p>
+        <p>{{$news->id}}</p>
+        <p>{{$news->image}}</p>
+        <h3><a href="/news/{{$news->id}}">{{$news->title}}</a></h3>
+        <p>{{$news->created_at->format('d-m-Y')}}</p>
+        <p>{{$news->tags}}</p>
+        <p>{{$news->content}}</p>
+        <p><a href="{{$news->website}}" target="_blank">{{$news->websiteName}}</a></p>
+        <p>{{$news->author}}</p>
       @endforeach
       @else
         <p>No news</p>    
     @endunless
   </div>
 </section>
-
-<!-- Footer -->
-<?php
-  //require_once 'php/footer.php';
-?>
+@endsection
