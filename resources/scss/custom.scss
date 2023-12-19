@@ -110,8 +110,15 @@ section {
 nav {
 	position: relative;
 	z-index: 1;
-	height: 70px;
-	margin-bottom: -70px;
+	height: 120px;
+	margin-bottom: -120px;
+  --mask: linear-gradient(to bottom, 
+      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 40%, 
+      rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
+  ) 100% 50% / 100% 100% repeat-x;
+	padding-bottom: 50px;
+  -webkit-mask: var(--mask); 
+  mask: var(--mask);
 	background-color: $achtergrond-zwart-trans;
 	display: flex;
 	flex-direction: row;
@@ -176,7 +183,7 @@ nav {
 }
 /*HEADER*/
 .header-b1 {
-	height: 60vh;
+	aspect-ratio: 19/6;
 	width: 100%;
 	background-color: #ef1fc2;
 	background-blend-mode: color-burn;
@@ -185,7 +192,7 @@ nav {
 	background-position: center;
 	background-repeat: no-repeat;
 	.row {
-		height: inherit;
+		height: 100%;
 		align-content: center;
 		.col {
 			text-align: center;
