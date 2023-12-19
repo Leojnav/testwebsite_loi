@@ -1,6 +1,8 @@
 <?php
 
 // use Illuminate\Http\Request;
+
+use App\Http\Controllers\newsController;
 use Illuminate\Support\Facades\Route;
 use App\Models\newsitems;
 /*
@@ -32,21 +34,11 @@ Route::get('/', function () {
 // });
 
 // All news items
-Route::get('/', function() {
-    return view('home', [
-        'pagetitle' => 'Testwebsite_Loi - Home',
-        'heading' => 'Latest news',
-        'news' => newsitems::all()
-    ]);
-});
+Route::get('/', [newsController::class, 'index']);
 
 // Single news item
-Route::get('/news/{id}', function($id) {
-    return view('news', [
-        'pagetitle' => 'News',
-        'news' => newsitems::find($id)
-    ]);
-});
+Route::get('/news/{newsitems}', [newsController::class, 'show']);
+
 // BMI calculator page
 Route::get('/bmi-calculator', function() {
     return view('bmi-calculator', [

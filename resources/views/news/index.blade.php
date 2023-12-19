@@ -1,5 +1,4 @@
 @extends('layout')
-
 @section('content')
 <?php  
 $fullname = <<<_END
@@ -18,13 +17,19 @@ $country = <<<_END
   The Netherlands
 _END;
 ?>
-<!-- Navbar & Database + other includes -->
-<?php
-	// require_once 'includes/header.php';
-?>
+
+<section class="header-b1">
+  <div class="row">
+    <div class="col">
+      <h1>{{$heading}}</h1>
+      <p>{{$heading2}}</p>
+    </div>
+  </div>
+</section>
+
 <section class=home-b1>
   <h1>
-    {{$pagetitle}}
+    {{$heading}}
   </h1>
   <h3>{{"My name is ".$fullname."."}}</h3>
   <p>{{"Today i will tell you a little about my self. I am ".$age." years old. And i live in the ".$country.". At home i have ".$pets." And my hobby's are ".$hobby}}</p>
@@ -58,14 +63,15 @@ _END;
 </section>
 <section class=home-b1>
   <div class='col'>
-    <h1>{{$heading}}</h1>
+    <h1>{{$heading2}}</h1>
+    @include('modules._search')
     @unless(count($news) == 0)
       @foreach ($news as $news)
         <p>{{$news->id}}</p>
         <p>{{$news->image}}</p>
         <h3><a href="/news/{{$news->id}}">{{$news->title}}</a></h3>
         <p>{{$news->created_at->format('d-m-Y')}}</p>
-        <p>{{$news->tags}}</p>
+        <x-news-tags :tags="$news->tags"/>
         <p>{{$news->content}}</p>
         <p><a href="{{$news->website}}" target="_blank">{{$news->websiteName}}</a></p>
         <p>{{$news->author}}</p>
