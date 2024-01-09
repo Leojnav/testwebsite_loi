@@ -36,8 +36,8 @@ Route::get('/', function () {
 // All news items
 Route::get('/', [newsController::class, 'index']);
 
-// Single news item
-Route::get('/news/{newsitems}', [newsController::class, 'show']);
+// Show Create news item
+Route::get('/news/create', [newsController::class, 'create']);
 
 // BMI calculator page
 Route::get('/bmi-calculator', function() {
@@ -67,3 +67,11 @@ Route::get('/upload', function() {
         'heading' => 'Upload'
     ]);
 });
+
+// Store News item dta
+Route::post('/news', [newsController::class, 'store']);
+
+
+// Single news item
+Route::get('/news/{newsitems}', [newsController::class, 'show']);
+

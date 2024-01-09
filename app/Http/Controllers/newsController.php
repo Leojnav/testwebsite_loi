@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\newsitems;
-use Illuminate\Http\Request;
+use Clockwork\Request\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
 class newsController extends Controller
@@ -23,5 +24,24 @@ class newsController extends Controller
 			'pagetitle' => 'News',
 			'news' => $newsitems
 		]);
+	}
+	//show create news item
+	public function create() {
+		return view('news.create', [
+			'pagetitle' => 'Post Newsitem',
+			'heading' => 'Post Newsitem'
+		]);
+	}
+	//store news item
+	public function store(Request $request) {
+		$newsitemsFormFields = request()->validate([
+			'title' => ['required', Rule::unique('newsitems', 'title')],
+			'content' => 'required',
+			'tags' => 'required',
+		 	'email' => ['required', 'email'],
+			'image' => 'required'
+		]);
+		newsitems::create($newsitemsFormFields);
+		return redirect('/');
 	}
 }

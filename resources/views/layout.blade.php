@@ -20,15 +20,15 @@
     {{-- {{pageCounter();}} --}}
   </p>
   <div class="navbar-left">
-    <img src="images/Leo.png" alt="Logo">
+    <img src="/images/Leo.png" alt="Logo">
   </div>
   <div class=navbar-right>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="bmi-calculator">BMI Calculator</a></li>
-      <li><a href="lab">Experimentation lab</a></li>
-      <li><a href="bunny">Bunny army</a></li>
-      <li><a href="upload">Upload</a></li>
+      <li><a href="/bmi-calculator">BMI Calculator</a></li>
+      <li><a href="/lab">Experimentation lab</a></li>
+      <li><a href="/bunny">Bunny army</a></li>
+      <li><a href="/upload">Upload</a></li>
     </ul>
   </div>
 </nav>
@@ -38,7 +38,7 @@
 </main>
 {{-- Footer --}}
 <footer>
-
+ <a href="/news/create">Post newsitem</a>
 </footer>
 </body>
 </html>

@@ -106,27 +106,66 @@ section {
     clear: both;
 	}
 }
+form {
+	label span {
+		color: $magenta;
+	}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button,input[type=number] {
+		-webkit-appearance: none;
+		-moz-appearance: textfield;
+	}
+	input,textarea{
+		background-color: $button-zwart;
+		border: 1px solid $border;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		padding: 5px 12px;
+		font-size: 14px;
+		line-height: 20px;
+		border-radius: 6px;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		&:focus-visible {
+			outline: 1px solid $roze;
+		}
+	}
+	.uk-button {
+		background-color: $button-zwart;
+		color: $button-txt;
+		border: 1px solid $border;
+		padding: 5px 25px;
+		border-radius: 6px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		&:hover { 
+			background-color: $button-hover;
+			border: 1px solid $button-border-hover;
+		}
+	}
+}
 /*NAVIGATION*/
 nav {
-	position: relative;
+	top: 0;
+	position: fixed;
 	z-index: 1;
-	height: 120px;
-	margin-bottom: -120px;
-  --mask: linear-gradient(to bottom, 
-      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 40%, 
-      rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
-  ) 100% 50% / 100% 100% repeat-x;
-	padding-bottom: 50px;
-  -webkit-mask: var(--mask); 
-  mask: var(--mask);
-	background-color: $achtergrond-zwart-trans;
+	height: 70px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 30px;
 	padding-left: 15px;
+	width: 100%;
+	&::before {
+		position: fixed;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 70px;
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.4) 80%,rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.1) 100%);
+	}
 	.navbar-left {
 		height: 45px;
+		position: relative;
 		img {
 			width: 45px;
 			height: 45px;
@@ -250,40 +289,6 @@ nav {
 	}
 	.col1-3 {
 		padding-top: 25px;
-		label span {
-			color: $magenta;
-		}
-		input::-webkit-outer-spin-button,
-		input::-webkit-inner-spin-button,input[type=number] {
-			-webkit-appearance: none;
-			-moz-appearance: textfield;
-		}
-		input {
-			background-color: $button-zwart;
-			border: 1px solid $border;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-			padding: 5px 12px;
-			font-size: 14px;
-			line-height: 20px;
-			border-radius: 6px;
-			margin-top: 5px;
-			margin-bottom: 10px;
-			&:focus-visible {
-				outline: 1px solid $roze;
-			}
-		}
-		.uk-button {
-			background-color: $button-zwart;
-			color: $button-txt;
-			border: 1px solid $border;
-			padding: 5px 25px;
-			border-radius: 6px;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-			&:hover { 
-				background-color: $button-hover;
-				border: 1px solid $button-border-hover;
-			}
-		}
 	}
 	.col2-3 {
 		padding-left: 35px;

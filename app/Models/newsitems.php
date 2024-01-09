@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class newsitems extends Model
 {
   use HasFactory;
+  
+  protected $fillable = ['title', 'content', 'tags', 'email', 'image', 'author', 'websiteName'];
 
   public function scopeFilter($query, array $filters){
     if($filters['tag'] ?? false){
