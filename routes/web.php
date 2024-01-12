@@ -2,9 +2,9 @@
 
 // use Illuminate\Http\Request;
 
-use App\Http\Controllers\newsController;
 use Illuminate\Support\Facades\Route;
-use App\Models\newsitems;
+use App\Http\Controllers\newsController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,7 +71,20 @@ Route::get('/upload', function() {
 // Store News item dta
 Route::post('/news', [newsController::class, 'store']);
 
+// Delete News item
+Route::delete('/news/{newsitems}', [newsController::class, 'destroy']);
+
+// Show Edit news item
+Route::get('/news/{newsitems}/edit', [newsController::class, 'edit']);
+
+// Update News item data
+Route::put('/news/{newsitems}', [newsController::class, 'update']);
 
 // Single news item
 Route::get('/news/{newsitems}', [newsController::class, 'show']);
 
+// Show sign up create page
+Route::get('/signup', [UserController::class, 'create']);
+
+// Create new users'
+Route::post('/users', [UserController::class, 'store']);

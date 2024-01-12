@@ -16,8 +16,8 @@ return new class extends Migration
 			$table->string('title', 100);
 			$table->string('tags', 100);
 			$table->longText('content', 100);
-			$table->string('image', 100);
-			$table->string('author', 100);
+			$table->string('image')->nullable();
+			$table->string('author')->nullable();
 			$table->string('email')->unique();
 			$table->string('website', 100);
 			$table->string("websiteName", 100);

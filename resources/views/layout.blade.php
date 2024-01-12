@@ -11,16 +11,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='//unpkg.com/alpinejs' defer></script>
   @vite(['resources/scss/custom.scss','resources/js/custom.js'])
   <title>{{$pagetitle}}</title>
 </head>
 <body>
-<nav>
+<nav class="nav">
   <p class="count">
     {{-- {{pageCounter();}} --}}
   </p>
   <div class="navbar-left">
-    <img src="/images/Leo.png" alt="Logo">
+    <a href="/"><img src="/images/Leo.png" alt="Logo"></a>
   </div>
   <div class=navbar-right>
     <ul>
@@ -29,6 +30,12 @@
       <li><a href="/lab">Experimentation lab</a></li>
       <li><a href="/bunny">Bunny army</a></li>
       <li><a href="/upload">Upload</a></li>
+      <li><a href="/news/create">Post</a></li>
+      {{-- @if(isset($new) || isset($news))
+        <li><a href="/news/{{ $new->id ?? $news->id }}/edit">Edit</a></li>
+      @endif --}}
+      <li><a href="/signup">Sign up</a></li>
+      <li><a href="/login">Log in</a></li>
     </ul>
   </div>
 </nav>
@@ -38,7 +45,7 @@
 </main>
 {{-- Footer --}}
 <footer>
- <a href="/news/create">Post newsitem</a>
+ 
 </footer>
 </body>
 </html>

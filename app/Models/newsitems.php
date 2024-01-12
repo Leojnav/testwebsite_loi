@@ -9,7 +9,7 @@ class newsitems extends Model
 {
   use HasFactory;
   
-  protected $fillable = ['title', 'content', 'tags', 'email', 'image', 'author', 'websiteName'];
+  // protected $fillable = ['title', 'content', 'tags', 'email', 'image', 'author', 'websiteName', 'website'];
 
   public function scopeFilter($query, array $filters){
     if($filters['tag'] ?? false){

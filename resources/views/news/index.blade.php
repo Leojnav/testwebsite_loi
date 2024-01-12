@@ -23,6 +23,7 @@ _END;
     <div class="col">
       <h1>{{$heading}}</h1>
       <p>{{$heading2}}</p>
+      <x-flash-message/> 
     </div>
   </div>
 </section>
@@ -66,19 +67,24 @@ _END;
     <h1>{{$heading2}}</h1>
     @include('modules._search')
     @unless(count($news) == 0)
-      @foreach ($news as $news)
-        <p>{{$news->id}}</p>
-        <p>{{$news->image}}</p>
-        <h3><a href="/news/{{$news->id}}">{{$news->title}}</a></h3>
-        <p>{{$news->created_at->format('d-m-Y')}}</p>
-        <x-news-tags :tags="$news->tags"/>
-        <p>{{$news->content}}</p>
-        <p><a href="{{$news->website}}" target="_blank">{{$news->websiteName}}</a></p>
-        <p>{{$news->author}}</p>
+      @foreach ($news as $new)
+        <p>{{$new->id}}</p>
+        <img src="{{$new->image ? asset('storage/' . $new->image) : asset('/images/no-image.png')}}" alt=""/>
+        {{-- <p>{{$new->image}}</p> --}}
+        <h3><a href="/news/{{$new->id}}">{{$new->title}}</a></h3>
+        <p>{{$new->created_at->format('d-m-Y')}}</p>
+        <x-news-tags :tags="$new->tags"/>
+        <p>{{$new->content}}</p>
+        <p><a href="{{$new->website}}" target="_blank">{{$new->websiteName}}</a></p>
+        <p>{{$new->author}}</p>
       @endforeach
       @else
         <p>No news</p>    
     @endunless
+    <div class="paginate">
+      {{$news->links()}}
+    </div>
   </div>
+
 </section>
 @endsection

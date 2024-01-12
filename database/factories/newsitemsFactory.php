@@ -21,7 +21,7 @@ class newsitemsFactory extends Factory
       'tags' => 'Nieuwsletter, Update, Announcement',
       'content' => $this->faker->paragraph(5),
       'email' => $this->faker->email(),
-      'image' => $this->faker->imageUrl(),
+      // 'image' => $this->faker->imageUrl(),
       'author' => $this->faker->name(),
       'website' => $this->faker->url(),
       'websiteName' => $this->faker->company(),
