@@ -37,7 +37,7 @@ Route::get('/', function () {
 Route::get('/', [newsController::class, 'index']);
 
 // Show Create news item
-Route::get('/news/create', [newsController::class, 'create']);
+Route::get('/news/create', [newsController::class, 'create'])->middleware('auth');
 
 // BMI calculator page
 Route::get('/bmi-calculator', function() {
@@ -52,7 +52,7 @@ Route::get('/lab', function() {
         'pagetitle' => 'Experimentation lab',
         'heading' => 'Experimentation lab'
     ]);
-});
+})->middleware('auth');
 // Emo bunny page
 Route::get('/bunny', function() {
     return view('bunny', [
@@ -66,25 +66,34 @@ Route::get('/upload', function() {
         'pagetitle' => 'Upload',
         'heading' => 'Upload'
     ]);
-});
+})->middleware('auth');
 
 // Store News item dta
-Route::post('/news', [newsController::class, 'store']);
+Route::post('/news', [newsController::class, 'store'])->middleware('auth');
 
 // Delete News item
-Route::delete('/news/{newsitems}', [newsController::class, 'destroy']);
+Route::delete('/news/{newsitems}', [newsController::class, 'destroy'])->middleware('auth');
 
 // Show Edit news item
-Route::get('/news/{newsitems}/edit', [newsController::class, 'edit']);
+Route::get('/news/{newsitems}/edit', [newsController::class, 'edit'])->middleware('auth');
 
 // Update News item data
-Route::put('/news/{newsitems}', [newsController::class, 'update']);
+Route::put('/news/{newsitems}', [newsController::class, 'update'])->middleware('auth');
 
 // Single news item
 Route::get('/news/{newsitems}', [newsController::class, 'show']);
 
 // Show sign up create page
-Route::get('/signup', [UserController::class, 'create']);
+Route::get('/signup', [UserController::class, 'create'])->middleware('guest');
 
 // Create new users'
 Route::post('/users', [UserController::class, 'store']);
+
+// Log user out
+Route::post('/logout', [UserController::class, 'destroy'])->middleware('auth');
+
+// Show login page
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+// Log user in
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);

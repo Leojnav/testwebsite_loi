@@ -193,6 +193,7 @@ form {
 					text-decoration: none;
 					font-size: 20px;
 					font-weight: bold;
+					line-height: 28px;
 					&:hover::after {
 						width: 100%;
 					}
@@ -245,6 +246,27 @@ form {
 	}
 	a {
 		text-decoration: none;
+	}
+}
+.logout-btn {
+	color: #E6EDF3;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: transparent;
+	border: none;
+	line-height: 28px;
+	&:hover::after {
+		width: 100%;
+	}
+	&:after {
+		content: "";
+		width: 0%;
+		height: 3px;
+		background: linear-gradient(90deg, $roze, $magenta 50%, $roze);
+		display: block;
+		margin: auto;
+		transition: 0.5s;
 	}
 }
 /*HEADER*/

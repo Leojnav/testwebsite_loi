@@ -52,7 +52,7 @@ class newsController extends Controller
 
 		// session()->flash('success', 'Newsitem has been posted!');
 
-		return redirect('/')->with('success', 'Newsitem has been posted!');
+		return redirect('/')->with('message', 'Newsitem has been posted!');
 	}
 
 	//edit news item
@@ -82,14 +82,14 @@ class newsController extends Controller
 
 		$newsitems->update($newsitemsFormFields);
 
-		// session()->flash('success', 'Newsitem has been posted!');
+		// session()->flash('message', 'Newsitem has been posted!');
 
-		return back()->with('success', 'Newsitem has been edited!');
+		return back()->with('message', 'Newsitem has been edited!');
 	}
 
 	//delete news item
 	public function destroy(newsitems $newsitems) {
 		$newsitems->delete();
-		return redirect('/')->with('success', 'Newsitem has been deleted!');
+		return redirect('/')->with('message', 'Newsitem has been deleted!');
 	}
 }

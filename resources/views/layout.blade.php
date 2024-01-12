@@ -24,19 +24,28 @@
     <a href="/"><img src="/images/Leo.png" alt="Logo"></a>
   </div>
   <div class=navbar-right>
+    @auth
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/bmi-calculator">BMI Calculator</a></li>
       <li><a href="/lab">Experimentation lab</a></li>
       <li><a href="/bunny">Bunny army</a></li>
       <li><a href="/upload">Upload</a></li>
-      <li><a href="/news/create">Post</a></li>
-      {{-- @if(isset($new) || isset($news))
-        <li><a href="/news/{{ $new->id ?? $news->id }}/edit">Edit</a></li>
-      @endif --}}
+      <li><a href="/news/manage">Manage news</a></li>
+      <li><form method="post" action="/logout">
+        @csrf
+        <button class="logout-btn" type="submit">Log out</button>
+      </form></li>
+    </ul>
+    @else 
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/bmi-calculator">BMI Calculator</a></li>
+      <li><a href="/bunny">Bunny army</a></li>
       <li><a href="/signup">Sign up</a></li>
       <li><a href="/login">Log in</a></li>
     </ul>
+    @endauth
   </div>
 </nav>
 {{-- View output --}}
@@ -45,7 +54,7 @@
 </main>
 {{-- Footer --}}
 <footer>
- 
+  <li><a href="/news/create">Create article</a></li>
 </footer>
 </body>
 </html>

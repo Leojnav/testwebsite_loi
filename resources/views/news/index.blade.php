@@ -23,6 +23,9 @@ _END;
     <div class="col">
       <h1>{{$heading}}</h1>
       <p>{{$heading2}}</p>
+      @auth
+        <h2>Welcome {{auth()->user()->name}}</h2>
+      @endauth
       <x-flash-message/> 
     </div>
   </div>
