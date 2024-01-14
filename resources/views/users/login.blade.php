@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-<h1>{{$heading}}</h1>
 <section class=home-b1>
   <div class='row'>
     <div class='col'>

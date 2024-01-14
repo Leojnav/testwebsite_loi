@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class newsitems extends Model
 {
@@ -23,4 +24,10 @@ class newsitems extends Model
       ->orWhere('websiteName', 'like', '%' . request('search') . '%');
     }
   }
+
+  // Relationship to user
+  public function user(){
+    return $this->belongsTo(User::class);
+    // for this example , 'user_id' is not nessasary, because laravel will look for user_id automaticly
+  } 
 }

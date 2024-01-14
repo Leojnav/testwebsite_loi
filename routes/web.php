@@ -71,6 +71,9 @@ Route::get('/upload', function() {
 // Store News item dta
 Route::post('/news', [newsController::class, 'store'])->middleware('auth');
 
+// Manage News items
+Route::get('/news/manage', [newsController::class, 'manage'])->middleware('auth');
+
 // Delete News item
 Route::delete('/news/{newsitems}', [newsController::class, 'destroy'])->middleware('auth');
 

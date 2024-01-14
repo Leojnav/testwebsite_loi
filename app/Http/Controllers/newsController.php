@@ -48,6 +48,8 @@ class newsController extends Controller
 			$newsitemsFormFields['image'] = $request->file('image')->store('news-images', 'public');
 		}
 
+		$newsitemsFormFields['user_id'] = auth()->id();
+
 		newsitems::create($newsitemsFormFields);
 
 		// session()->flash('success', 'Newsitem has been posted!');
@@ -66,6 +68,11 @@ class newsController extends Controller
 
 	//update news item
 	public function update(Request $request, newsitems $newsitems) {
+		// Make sure logined user is the owner of the news item
+		if($newsitems->user_id !== auth()->id()) {
+			abort(403, 'Unauthorized action.');
+		}
+
 		$newsitemsFormFields = request()->validate([
 			'title' => ['required'],
 			'content' => 'required',
@@ -89,7 +96,21 @@ class newsController extends Controller
 
 	//delete news item
 	public function destroy(newsitems $newsitems) {
+		// Make sure logined user is the owner of the news item
+		if($newsitems->user_id !== auth()->id()) {
+			abort(403, 'Unauthorized action.');
+		}
+
 		$newsitems->delete();
-		return redirect('/')->with('message', 'Newsitem has been deleted!');
+		return redirect('/news/manage')->with('message', 'Newsitem has been deleted!');
+	}
+
+	//manage news items
+	public function manage() {
+		return view('news.manage', [
+			'pagetitle' => 'Testwebsite_Loi - Manage',
+			'heading' => 'Manage Newsitems',
+			'news' => auth()->user()->newsitems()->get()
+		]);
 	}
 }
