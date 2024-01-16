@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\newsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\libraryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,20 +54,9 @@ Route::get('/lab', function() {
         'heading' => 'Experimentation lab'
     ]);
 })->middleware('auth');
-// Emo bunny page
-Route::get('/bunny', function() {
-    return view('bunny', [
-        'pagetitle' => 'Emo Bunny',
-        'heading' => 'Emo Bunny'
-    ]);
-});
-// Upload page
-Route::get('/upload', function() {
-    return view('upload', [
-        'pagetitle' => 'Upload',
-        'heading' => 'Upload'
-    ]);
-})->middleware('auth');
+
+// Library page
+Route::get('/library', [libraryController::class, 'library'])->middleware('auth');
 
 // Store News item dta
 Route::post('/news', [newsController::class, 'store'])->middleware('auth');

@@ -45,7 +45,7 @@ class User extends Authenticatable
     ];
 
     // Relationship to newsitems
-    public function newsitems(){
+    public function newsitems() {
       return $this->hasMany(newsitems::class);
       // for this example , 'user_id' is not nessasary, because laravel will look for user_id automaticly
     }

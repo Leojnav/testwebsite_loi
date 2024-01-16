@@ -290,7 +290,7 @@ form {
 /*MAIN*/
 .home-b1 {
 	width: 40vw;
-	margin: 50px auto;
+	margin: 100px auto;
 	.col1-5 {
 		padding-top: 25px;
 		text-align:center;
@@ -305,8 +305,10 @@ form {
 		}
 	}
 }
-/*BUNNY*/
-.bunny-b1 {
+/*LIBRARY*/
+.library-b1 {
+	width: 60vw;
+	margin: 100px auto;
 	.col1-5 {
 		padding-top: 25px;
 	}
@@ -329,7 +331,7 @@ form {
 /*BMI*/
 .bmi-b1 {
 	width: 40vw;
-	margin: 50px auto;
+	margin: 100px auto;
 	.col p {
 		line-height: 26px;
 	}

@@ -28,9 +28,8 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/bmi-calculator">BMI Calculator</a></li>
-      <li><a href="/lab">Experimentation lab</a></li>
-      <li><a href="/bunny">Bunny army</a></li>
-      <li><a href="/upload">Upload</a></li>
+      <li><a href="/library">Library</a></li>
+      <li><a href="/lab">Lab</a></li>
       <li><a href="/news/manage">Manage news</a></li>
       <li><form method="post" action="/logout">
         @csrf
